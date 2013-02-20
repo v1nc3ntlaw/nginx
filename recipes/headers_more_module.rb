@@ -50,5 +50,14 @@ bash "extract_headers_more" do
 
 end
 
+template "#{node['nginx']['dir']}/conf.d/clear_headers.conf" do
+  source "modules/clear_headers.conf.erb"
+  owner "root"
+  group "root"
+  mode 00644
+
+  notifies :reload, "service[nginx]"
+end
+
 node.run_state['nginx_configure_flags'] =
     node.run_state['nginx_configure_flags'] | ["--add-module=#{module_location}"]
