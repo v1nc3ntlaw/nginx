@@ -36,5 +36,5 @@ template "#{node['nginx']['dir']}/sites-available/default" do
 end
 
 nginx_site 'default' do
-  enable node['nginx']['default_site_enabled']
+  enable false
 end

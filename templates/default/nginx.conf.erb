@@ -68,5 +68,18 @@ http {
   <% end -%>
 
   include <%= node['nginx']['dir'] %>/conf.d/*.conf;
+
+  <% if node['nginx']['default_site_enabled'] -%>
+  server {
+    listen      80;
+    server_name  -;
+
+    location / {
+      root   <%= node['nginx']['source']['prefix'] %>/html;
+      index  index.html index.htm;
+    }
+  }
+  <% end -%>
+
   include <%= node['nginx']['dir'] %>/sites-enabled/*;
 }
