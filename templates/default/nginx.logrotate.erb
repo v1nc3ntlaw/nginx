@@ -7,7 +7,8 @@
   delaycompress
   notifempty
   create 644 root root
+  sharedscripts
   postrotate
-    kill -s USR1 `cat <%= node['nginx']['pid'] %>`
+    [ ! -f <%= node['nginx']['pid'] %> ] || kill -USR1 `cat <%= node['nginx']['pid'] %>` ]
   endscript
 }
