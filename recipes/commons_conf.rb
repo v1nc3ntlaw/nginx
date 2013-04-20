@@ -27,6 +27,13 @@ template "nginx.conf" do
   notifies :reload, 'service[nginx]'
 end
 
+template "/etc/logrotate.d/nginx" do
+  source "nginx.logrotate.erb"
+  owner "root"
+  group "root"
+  mode 00644
+end
+
 template "#{node['nginx']['dir']}/sites-available/default" do
   source "default-site.erb"
   owner "root"
