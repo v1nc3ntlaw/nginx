@@ -41,6 +41,8 @@ http {
   tcp_nopush on;
   tcp_nodelay on;
 
+  charset utf-8;
+
   <% if node['nginx']['keepalive'] == 'on' %>
   keepalive_timeout  <%= node['nginx']['keepalive_timeout'] %>;
   <% end %>
