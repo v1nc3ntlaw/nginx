@@ -22,7 +22,7 @@ depends 'ohai', '>= 1.1.4'
   recommends cb
 end
 
-recommends "runit", "<= 0.16.2"
+depends 'runit', '~> 1.2'
 
 attribute "nginx/dir",
   :display_name => "Nginx Directory",
